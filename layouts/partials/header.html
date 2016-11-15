@@ -5,7 +5,7 @@
 
 <body lang="{{ .Site.Params.lang }}">
 
-<section class="header"> 
+<section class="header">
     <div class="container">
         <div class="content">
             {{ if .Site.Params.gravatar }}
@@ -16,9 +16,11 @@
             <a href="/"><div class="name">{{ .Site.Params.author }}</div></a>
             <nav>
                 <ul>
-                    <a href="/blog/"><li>Blog</li></a>
-                    <a href="/about/"><li>About</li></a>
-                    <a href="/code/"><li>Code</li></a>
+                    {{ range .Site.Menus.main }}
+                        <a href="{{.URL}}">{{ .Pre }}
+                            <span>{{ .Name }}</span>
+                        </a>
+                    {{end}}
                 </ul>
             </nav>
         </div>
@@ -34,7 +36,7 @@
                 <i class="icon ion-social-github"></i>
             </a>
         {{ end }}
-        
+
         {{ if .Site.Params.twitter }}
             <a href="{{ .Site.Params.twitter }}" target="_blank">
                 <i class="icon ion-social-twitter"></i>
